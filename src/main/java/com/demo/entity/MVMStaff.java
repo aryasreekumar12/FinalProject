@@ -16,7 +16,7 @@ public class MVMStaff {
 	 private int stfSal;
 	 private String stfBldGrp;
 	 private String stfEmail;
-	 private int userId;
+	private int userId;
 	 private String userPassword;
 	public MVMStaff() {
 		super();
@@ -111,6 +111,12 @@ public class MVMStaff {
 	}
 	public void setStfEmail(String stfEmail) {
 		this.stfEmail = stfEmail;
+	}
+	public Date getStfJod() {
+		return stfJod;
+	}
+	public void setStfJod(Date stfJod) {
+		this.stfJod = stfJod;
 	}
 	public int getUserId() {
 		return userId;
