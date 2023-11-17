@@ -21,11 +21,11 @@ public class MVMStaff {
 	public MVMStaff() {
 		super();
 	}
-	public MVMStaff(String stfFName, String stfGnd, Date stfDob, Long stfMob, String stfAdd,
-			String stfDept, String stfSpec, String stfQualif, int stfSal, String stfBldGrp, String stfEmail, int userId,
+	
+	public MVMStaff(String stfFName, String stfGnd, Date stfDob, Long stfMob, String stfAdd, String stfDept,
+			String stfSpec, String stfQualif, Date stfJod, int stfSal, String stfBldGrp, String stfEmail, int userId,
 			String userPassword) {
 		super();
-//		this.staffId = staffId;
 		this.stfFName = stfFName;
 		this.stfGnd = stfGnd;
 		this.stfDob = stfDob;
@@ -34,18 +34,14 @@ public class MVMStaff {
 		this.stfDept = stfDept;
 		this.stfSpec = stfSpec;
 		this.stfQualif = stfQualif;
+		this.stfJod = stfJod;
 		this.stfSal = stfSal;
 		this.stfBldGrp = stfBldGrp;
 		this.stfEmail = stfEmail;
 		this.userId = userId;
 		this.userPassword = userPassword;
 	}
-//	public int getStaffId() {
-//		return staffId;
-//	}
-//	public void setStaffId(int staffId) {
-//		this.staffId = staffId;
-//	}
+
 	public String getStfFName() {
 		return stfFName;
 	}
@@ -94,6 +90,12 @@ public class MVMStaff {
 	public void setStfQualif(String stfQualif) {
 		this.stfQualif = stfQualif;
 	}
+	public Date getStfJod() {
+		return stfJod;
+	}
+	public void setStfJod(Date stfJod) {
+		this.stfJod = stfJod;
+	}
 	public int getStfSal() {
 		return stfSal;
 	}
@@ -125,5 +127,5 @@ public class MVMStaff {
 		this.userPassword = userPassword;
 	}
 	 
-
+	 
 }

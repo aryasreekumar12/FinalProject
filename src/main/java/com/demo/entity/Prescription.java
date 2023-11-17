@@ -16,20 +16,20 @@ public class Prescription {
 	 @ManyToOne
 	    @JoinColumn(name = "patId",insertable=false,updatable=false)
 	    private PatientDetails patientDetails;
-	private String stfName;
+	private int stfId;
 	 @ManyToOne
-	    @JoinColumn(name = "stfFName",insertable=false,updatable=false)
+	    @JoinColumn(name = "stfId",insertable=false,updatable=false)
 	private StaffDetails staffDetails;
 	private String presc;
 	private String medi;
 	public Prescription() {
 		super();
 	}
-	public Prescription(int prescId, int patId, String stfName, String presc, String medi) {
+	public Prescription(int prescId, int patId, int stfId, String presc, String medi) {
 		super();
 		this.prescId = prescId;
 		this.patId = patId;
-		this.stfName = stfName;
+		this.stfId = stfId;
 		this.presc = presc;
 		this.medi = medi;
 	}
@@ -45,11 +45,11 @@ public class Prescription {
 	public void setPatId(int patId) {
 		this.patId = patId;
 	}
-	public String getStfName() {
-		return stfName;
+	public int getStfName() {
+		return stfId;
 	}
-	public void setStfName(String stfName) {
-		this.stfName = stfName;
+	public void setStfName(int stfId) {
+		this.stfId = stfId;
 	}
 	public String getPresc() {
 		return presc;
