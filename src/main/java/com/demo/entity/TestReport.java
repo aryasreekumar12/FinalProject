@@ -20,7 +20,7 @@ public class TestReport {
     private PatientDetails patientDetails;
 	private String testName;
 	@ManyToOne
-    @JoinColumn(name = "testName",insertable=false,updatable=false)
+    @JoinColumn(name = "testId",insertable=false,updatable=false)
     private TestDetails testDetails;
 	private Date testDate;
 	private String normal;

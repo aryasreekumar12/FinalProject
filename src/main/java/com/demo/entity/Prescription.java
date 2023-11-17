@@ -18,7 +18,7 @@ public class Prescription {
 	    private PatientDetails patientDetails;
 	private String stfName;
 	 @ManyToOne
-	    @JoinColumn(name = "stfFName",insertable=false,updatable=false)
+	    @JoinColumn(name = "stfId",insertable=false,updatable=false)
 	private StaffDetails staffDetails;
 	private String presc;
 	private String medi;
