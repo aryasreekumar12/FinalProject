@@ -54,6 +54,7 @@ public class DoctorService implements IDoctorService{
 		return (PatientDetails) patientDetailsList;
 	}
 
+	
 	@Override
 	public PatientDetails findPatient(int patId) {
 		// TODO Auto-generated method stub
