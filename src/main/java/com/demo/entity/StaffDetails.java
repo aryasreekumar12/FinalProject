@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 public class StaffDetails {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int staffId;
+	private int stfId;
 	 private String stfFName;
 	 private String stfGnd;
 	 private Date stfDob;
@@ -25,11 +25,11 @@ public class StaffDetails {
 	 private String stfBldGrp;
 	 private String stfEmail;
 	private boolean isActive;
-	public StaffDetails(int staffId, String stfFName, String stfGnd, Date stfDob, Long stfMob, String stfAdd,
+	public StaffDetails(int stfId, String stfFName, String stfGnd, Date stfDob, Long stfMob, String stfAdd,
 			String stfDept, String stfSpec, String stfQualif, Date stfJod, int stfSal, String stfBldGrp,
 			String stfEmail, boolean isActive) {
 		super();
-		this.staffId = staffId;
+		this.stfId = stfId;
 		this.stfFName = stfFName;
 		this.stfGnd = stfGnd;
 		this.stfDob = stfDob;
@@ -47,11 +47,11 @@ public class StaffDetails {
 	public StaffDetails() {
 		super();
 	}
-	public int getStaffId() {
-		return staffId;
+	public int getstfId() {
+		return stfId;
 	}
-	public void setStaffId(int staffId) {
-		this.staffId = staffId;
+	public void setstfId(int stfId) {
+		this.stfId = stfId;
 	}
 	public String getStfFName() {
 		return stfFName;
