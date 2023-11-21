@@ -43,7 +43,7 @@ public class TestReportController {
 
 	@PostMapping("/testreport")
 	public TestReport addTestReport(@RequestBody TestReport theTestReport) {
-		theTestReport.setPatId(0);
+//		theTestReport.setPatId(0);
 		testReportService.save(theTestReport);
 		return theTestReport;
 

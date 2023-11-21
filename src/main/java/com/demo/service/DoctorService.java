@@ -1,7 +1,9 @@
 package com.demo.service;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+//import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +19,8 @@ import com.demo.repository.IDocPrescRepo;
 import com.demo.repository.IDocReport;
 import com.demo.repository.IDocTestRepo;
 import com.demo.repository.IDoctorRepo;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class DoctorService implements IDoctorService{
@@ -42,24 +46,28 @@ public class DoctorService implements IDoctorService{
 	}
 
 	@Override
-	public PatientDetails findPatientByIdAndName(int stfId, LocalDate appDate) {
-		List <Integer> patIdList=(List<Integer>) iDocListRepo.findPatientByIdAndName(stfId, appDate);
-		List <PatientDetails> patientDetailsList =new ArrayList<>();
-		for(Integer patId:patIdList) {
-			PatientDetails patientDetails=iDoctorRepo.findPatient(patId);
-			if(patientDetails!=null) {
-				patientDetailsList.add(patientDetails);
-			}
-		}
-		return (PatientDetails) patientDetailsList;
-	}
+	public List<PatientDetails> findPatientByIdAndName(int stfId, Date appDate) {
+	    List<Integer> patIdList = iDocListRepo.findPatientByIdAndName(stfId, appDate);
+	    List<PatientDetails> patientDetailsList = new ArrayList<>();
 
-	
-	@Override
-	public PatientDetails findPatient(int patId) {
-		// TODO Auto-generated method stub
-		return null;
+	    if (patIdList != null) {
+	        for (Integer patId : patIdList) {
+	        	System.out.println(patId);
+	            PatientDetails patientDetails = iDoctorRepo.findPatient(patId);
+	            if (patientDetails != null) {
+	                patientDetailsList.add(patientDetails);
+	            }
+	        }
+	    }
+
+	    return patientDetailsList;
 	}
+//	
+//	@Override
+//	public PatientDetails findPatient(int patId) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public PatientDetails findById(int patId) {
@@ -77,7 +85,7 @@ public class DoctorService implements IDoctorService{
 
 	@Override
 	public Prescription findPrescById(int patId) {
-		Optional<Prescription>result=iDocPrescRepo.findById(patId);
+		Optional <Prescription> result=Optional.ofNullable(iDocPrescRepo.findPresc(patId));
 		Prescription thePrescription=null;
 		if(result.isPresent()) {
 			thePrescription=result.get();
@@ -88,7 +96,7 @@ public class DoctorService implements IDoctorService{
 		return thePrescription;
 	}
 
-
+	
 	@Override
 	public void save(Prescription thePrescription) {
 		iDocPrescRepo.save(thePrescription);
@@ -98,7 +106,7 @@ public class DoctorService implements IDoctorService{
 
 	@Override
 	public TestReport findRepById(int patId) {
-		Optional<TestReport>result=iDocReport.findById(patId);
+		Optional<TestReport>result=Optional.ofNullable(iDocReport.findReport(patId));
 		TestReport theTestReport=null;
 		if(result.isPresent()) {
 			theTestReport=result.get();

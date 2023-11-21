@@ -18,6 +18,6 @@ public interface IReceptionistService {
 	public abstract void deleteById(int theId);
 	
 	public abstract List<PatientList>findAllList();
-	public abstract void save(PatientList thePatientList);
+	public abstract void saveList(PatientList thePatientList);
 
 }

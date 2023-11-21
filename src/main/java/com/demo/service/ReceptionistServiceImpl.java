@@ -100,7 +100,7 @@ public class ReceptionistServiceImpl implements IReceptionistService {
 		}
 	
 	@Override
-	public void save(PatientList thePatientList) {
+	public void saveList(PatientList thePatientList) {
 		iPatientListRepository.save(thePatientList);
 	}
 	

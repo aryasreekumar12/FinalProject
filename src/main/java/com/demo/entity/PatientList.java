@@ -1,7 +1,10 @@
 package com.demo.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
+//import java.util.Date;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,11 +18,11 @@ public class PatientList {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int appNbr;
 	private int patId;
-	 @ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	    @JoinColumn(name = "patId",insertable=false,updatable=false)
 	    private PatientDetails patientDetails;
 	private int stfId;
-	 @ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	    @JoinColumn(name = "stfId",insertable=false,updatable=false)
 	private StaffDetails staffDetails;
 	private Date appDate;

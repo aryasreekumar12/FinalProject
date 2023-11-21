@@ -138,5 +138,18 @@ public class ReceptionistController {
 	public List<PatientList> findAllList() {
 		return iReceptionistService.findAllList();
 	}
+	
+
+	@PostMapping("/bookapp")
+
+	public PatientList addPatientList(@RequestBody PatientList thePatientList) {
+
+//		thePatientList.setPatId(0);
+
+		iReceptionistService.saveList(thePatientList);
+
+		return thePatientList;
+
+	}
 
 }
