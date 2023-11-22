@@ -117,4 +117,18 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 
+
+	@Override
+	public List<StaffDetails> findStaff() {
+		Optional <List<StaffDetails>> result=Optional.ofNullable(adminRepository.findStaff());
+		List<StaffDetails> theStaff=null;
+		if(result.isPresent()) {
+			theStaff=result.get();
+		}
+		else {
+			throw new RuntimeException("Did not find staff Id ");
+		}
+		return theStaff;
+
+	}
 }

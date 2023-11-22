@@ -1,7 +1,10 @@
 package com.demo.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
+import com.demo.entity.StaffDetails;
 import com.demo.entity.UserDetails;
 import com.demo.repository.LoginRepo;
 
@@ -23,6 +26,20 @@ public class UserService implements IUserDetailsService{
 			return null;
 		}
 		return user;
+	}
+
+
+	@Override
+	public UserDetails findById(int theId) {
+		Optional<UserDetails>result=login.findById(theId);
+		UserDetails theUser=null;
+		if(result.isPresent()) {
+			theUser=result.get();
+		}
+		else {
+			throw new RuntimeException("Did not find user Id "+theId);
+		}
+		return theUser;
 	}
 
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.entity.MVMStaff;
 import com.demo.entity.StaffDetails;
+import com.demo.entity.UpdateClass;
 import com.demo.entity.UserDetails;
 import com.demo.service.AdminService;
 import com.demo.service.IUserDetailsService;
@@ -63,7 +64,7 @@ public class AdminRestController {
 	}
 	
 	@PutMapping("/admins/{staffId}")
-	public StaffDetails updateStaff(@PathVariable int staffId, @RequestBody StaffDetails theAdmin) {
+	public UpdateClass updateStaff(@PathVariable int staffId, @RequestBody MVMStaff theAdmin) {
 		StaffDetails adm = adminService.findById(staffId);
 		if (theAdmin == null) {
 			throw new RuntimeException("Staff id not found-" + staffId);
@@ -82,7 +83,14 @@ public class AdminRestController {
 		adm.setStfBldGrp(theAdmin.getStfBldGrp());
 		adm.setStfEmail(theAdmin.getStfEmail());																																																			
 		adminService.saveStaff(adm);
-		return adm;
+		UserDetails usd=userdetails.findById(staffId);
+		usd.setStfId(adm.getstfId());
+		usd.setUserPass(theAdmin.getUserPassword());
+		adminService.saveUser(usd);
+		UpdateClass result=new UpdateClass();
+		result.setStfDet(adm);
+		result.setUsd(usd);
+		return result;
 	}
 	
 	@DeleteMapping("/admins/{staffId}")

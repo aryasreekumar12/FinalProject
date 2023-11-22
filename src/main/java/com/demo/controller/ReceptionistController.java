@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.entity.PatientDetails;
 import com.demo.entity.PatientList;
+import com.demo.entity.StaffDetails;
+import com.demo.service.AdminService;
 import com.demo.service.IReceptionistService;
 
 @CrossOrigin
@@ -35,6 +37,7 @@ import com.demo.service.IReceptionistService;
 public class ReceptionistController {
 
 	private IReceptionistService iReceptionistService;
+	private AdminService admin;
 
 	@Autowired
 
@@ -150,6 +153,10 @@ public class ReceptionistController {
 
 		return thePatientList;
 
+	}
+	@GetMapping("/doctorslists")
+	public List<StaffDetails> finddoctor() {
+		return (List<StaffDetails>) admin.findStaff();
 	}
 
 }

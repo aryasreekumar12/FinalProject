@@ -18,4 +18,5 @@ public interface AdminService {
 	public abstract void saveUser(UserDetails theUser);
 	public abstract void deleteById(int theId);
 	public abstract String findSTaffByIdAndName(int stfId);
+	public abstract List<StaffDetails>findStaff();
 }
