@@ -81,7 +81,7 @@ public class AdminRestController {
 		adm.setStfSal(theAdmin.getStfSal());
 		adm.setStfBldGrp(theAdmin.getStfBldGrp());
 		adm.setStfEmail(theAdmin.getStfEmail());																																																			
-		adminService.save(adm);
+		adminService.saveStaff(adm);
 		return adm;
 	}
 	

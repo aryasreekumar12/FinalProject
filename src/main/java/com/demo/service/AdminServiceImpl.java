@@ -95,7 +95,7 @@ public class AdminServiceImpl implements AdminService{
 
 
 	@Override
-	public void save(StaffDetails theAdmin) {
+	public void saveStaff(StaffDetails theAdmin) {
 		adminRepository.save(theAdmin);
 		
 	}
@@ -106,6 +106,14 @@ public class AdminServiceImpl implements AdminService{
 	public String findSTaffByIdAndName(int stfId) {
 		// TODO Auto-generated method stub
 		return adminRepository.findStaffByIdAndName(stfId);
+	}
+
+
+
+	@Override
+	public void saveUser(UserDetails theUser) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
