@@ -1,5 +1,6 @@
 package com.demo.service;
 
+import java.util.ArrayList;
 import java.util.List; 
 import java.util.Optional;
 
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.entity.MVMStaff;
+import com.demo.entity.PatientDetails;
 import com.demo.entity.StaffDetails;
+import com.demo.entity.UserDetails;
 import com.demo.repository.AdminRepository;
+import com.demo.repository.LoginRepo;
 
 
 
@@ -19,12 +23,17 @@ public class AdminServiceImpl implements AdminService{
 	
 
 	private AdminRepository adminRepository;
+	private LoginRepo loginRepo;
 	
 	
-	public AdminServiceImpl(AdminRepository adminRepository) {
-	super();
-	this.adminRepository = adminRepository;
-}
+
+
+
+	public AdminServiceImpl(AdminRepository adminRepository, LoginRepo loginRepo) {
+		super();
+		this.adminRepository = adminRepository;
+		this.loginRepo = loginRepo;
+	}
 
 
 
@@ -68,10 +77,12 @@ public class AdminServiceImpl implements AdminService{
 		stfdet.setStfBldGrp(theAdmin.getStfBldGrp());
 		stfdet.setStfEmail(theAdmin.getStfEmail());
 		adminRepository.save(stfdet);
-		//create objEct of uesrdetails--ud
 		
-//		ud.setname(theAdmin.getStfFName())
-		//adminRepository.save(ud);
+		UserDetails usrDet=new UserDetails();
+		usrDet.setStfId(stfdet.getstfId());
+		usrDet.setUserPass(theAdmin.getUserPassword());
+		loginRepo.save(usrDet);
+		
 	}
 
 	@Override
@@ -89,6 +100,13 @@ public class AdminServiceImpl implements AdminService{
 		
 	}
 
+
+
+	@Override
+	public String findSTaffByIdAndName(int stfId) {
+		// TODO Auto-generated method stub
+		return adminRepository.findStaffByIdAndName(stfId);
+	}
 
 
 }
